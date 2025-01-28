@@ -1,5 +1,5 @@
-# seq--ncer
-The goal is to create a sequencer like eurorack module that is different from the rest.
+# Modulencer
+The goal is to create a combination mulation tool and sequencer (hence, "modulencer") eurorack module that is different from the rest.
 
 ## Initial goals
  * Be user interface oriented. Complicated features, yet easy to use.
