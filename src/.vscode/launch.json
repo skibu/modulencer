@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/${input:executableName}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++: clang++ build all files"
+        }
+    ],
+    "inputs": [
+        {
+            "type": "promptString",
+            "id": "executableName",
+            "description": "Name of your executable"
+        }
+    ]
+}
