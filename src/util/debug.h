@@ -18,9 +18,10 @@
 // Returns the current thread's ID as a string.
 std::string thread_id();
 
-// Returns the current thread's ID as a string, but only the last 8 characters.
+// Returns the current thread's ID as a string, but only the last 6 characters.
 std::string short_thread_id();
 
+// Returns as a string the time elapsed in microseconds since application started.
 std::string time_str();
 
 // See https://stackoverflow.com/questions/1644868/define-macro-for-debug-printing-in-c#1644898
@@ -30,7 +31,7 @@ std::string time_str();
     do {                                                                               \
         if (DEBUG_TEST) {                                                              \
             const char* filename = std::filesystem::path(__FILE__).filename().c_str(); \
-            fprintf(stderr, "%s DEBUG %s %s:%d:%s() - " fmt,                           \
+            fprintf(stderr, "%s DEBUG %s %s:%d:%s() - " fmt "\n",                      \
                     time_str().c_str(), short_thread_id().c_str(), filename,           \
                     __LINE__, __func__, ##__VA_ARGS__);                                \
         }                                                                              \
