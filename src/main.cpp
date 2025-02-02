@@ -15,32 +15,31 @@ int main() {
 
     using json = nlohmann::json;
     std::ifstream f("example.json");
-
     try {
         json data = json::parse(f);
         float pi = data["pi"];
         int e = data["answer"]["everything"];
         auto answer = data["answer"];
         int every = answer["everything"];
-        int x = 9;
+        std::cout << "From JSON file pi=" << pi << " e=" << e << " every=" << every << std::endl;
     } catch (json::parse_error& e) {
-        std::cerr << "JSON parse error: " << e.what() << std::endl;
+        std::cout << "JSON parse error: " << e.what() << std::endl;
     }
 
     for (int i = 0; i < 2; i++) {
         debug("fast_rand()=%d", fast_rand());
     }
-
     for (int i = 0; i < 2; i++) {
         debug("fast_rand(1, 100)=%d", fast_rand(1, 100));
     }
 
-    std::cout << "Hello, World!" << std::endl;
+    debug("Starting Clock test...");
 
     // Run separate thread forever (for now)
-    auto clock = Clock::create();
+    Clock& clock = Clock::create();
+    clock.set_BPM(60).set_PPQN(24).run();
 
-    clock.setBPM(60).setPPQN(4).run();
+    // Don't terminate main thread. Let clock thread run forever.
     clock.join();
 
     return 0;
