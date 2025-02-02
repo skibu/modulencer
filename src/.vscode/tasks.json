@@ -10,6 +10,7 @@
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
                 "-g",
+                "-Wshadow",
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
@@ -36,6 +37,7 @@
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
                 "-g",
+                "-Wshadow",
                 "${workspaceFolder}/main.cpp",
                 "${workspaceFolder}/*/*.cpp",
                 "-o",
