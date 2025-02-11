@@ -32,7 +32,7 @@ Next step is to use the standard MacOS System Information tool.  In Launchpad go
 and click on System Information icon. Then select USB on left side to see detailed info on USB connections. 
 You will see multiple USB devices, including built in ones, but look for a USB Serial one similar to 
 the one shown below. If you don't see such a device then it means that your USB cable is not connecting
-to the ESP32 board at all.
+to the ESP32 board at all.<br>
 <img width="510" alt="sys_info" src="https://github.com/user-attachments/assets/399f4611-e430-444e-a6c2-5415ec68f1c9" />
 
 Look specifically for the Product ID and the Vendor ID of the USB chip that used on your ESP32 board. 
@@ -42,6 +42,9 @@ It could also be another Product ID from the company WCH that is not automatical
 For unsupported USB chips you will need to load in a new driver onto your MacOS computer.
 
 ## Update drivers on MacOS to handle CH340K chip
+`Note: these instructions are only for if the chip you are having trouble with is a WCH one, where 
+System Information tool showed a Vendor ID of 0x1a86. `
+
 The driver problem is rather complicated but the solution is quite simple. The reason it is 
 complicated is because there is a lot of disinformation out there due to the drivers changing over 
 the years. 
@@ -70,7 +73,33 @@ Contents
 $ ls /Library/Extensions/CH34xVCPDriver.kext/Contents/Info.plist
 /Library/Extensions/CH34xVCPDriver.kext/Contents/Info.plist
 ```
+The Info.plist file needs to contain the Product ID of the WCH chip that you are using. For my case 
+it was the CH340K and the MacOS System Information tool showed a Product ID of 0x7522 in hex (29986). 
+So search through your `/Library/Extensions/CH34xVCPDriver.kext/Contents/Info.plist` file and confirm
+that it includes 29986 (or whatever your WCH chip Product ID is in decimal format) using:
+```
+$ grep 29986 /Library/Extensions/CH34xVCPDriver.kext/Contents/Info.plist
+			<integer>29986</integer>
+			<integer>29986</integer>
+```
+If 29986 is indeed in the file then take the next step.
 
+## Reboot
+To make sure the driver takes effect, reboot your computer.
+
+## Verifying
+After the driver successfully loaded and you have rebooted your computer, hook up your ESP32
+board to your MacOS computer via USB. Your computer should automatically create the needed /dev/tty 
+file for communication:
+```
+$ ls /dev/tty.*
+/dev/tty.BLTH				/dev/tty.wchusbserial14310
+/dev/tty.Bluetooth-Incoming-Port
+```
+There should be a new "tty." (and "cu.") file called something like `/dev/tty.wchusbserial14310`
+
+Configure VS Code to use the newly created device port.
+Finally, try flashing the firmware again. It should now work!
 
 
 
