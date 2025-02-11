@@ -38,3 +38,6 @@ speaker directly.
 Note: first purchased a 4.3" CrowPanel since thought might want a smaller display. The display appears to be 
 identical to the 7" version though so any software developed for the 4.3" display should automatically work
 on the 7" display as well.
+
+## Info on other possible displays
+See https://github.com/skibu/modulencer/blob/main/docs/notes/display_boards.md
