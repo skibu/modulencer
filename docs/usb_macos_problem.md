@@ -59,7 +59,9 @@ But someone let WCH know about the problem a few years ago and they addressed it
 pkg file THAT WORKS! Simply go to https://github.com/skibu/modulencer/blob/main/misc/CH34xVCPDriver.pkg
 , download the 
 .pkg file onto your MacOS machine, and then execute the .pkg file to install the driver.
-Yes, this pkg file is different from latest ones available from WCH GitHub repo. Was not able to get 
+A dialog box should pop up stating there was a security issue and that CHW was trying to install a driver and needed permission. Go to System Settings and give permission to actually install the driver. Then system should state that your computer needs to be restarted.
+
+Yes, this pkg file here is different from latest ones available from WCH GitHub repo. Was not able to get 
 the one from the WCH GitHub repo to work.
 
 In case you are interested how I found this magic driver see 
@@ -88,7 +90,7 @@ If 29986 is indeed in the file then take the next step.
 ## Reboot
 To make sure the driver takes effect, reboot your computer.
 
-## Verifying
+## Verifying Communication
 After the driver successfully loaded and you have rebooted your computer, hook up your ESP32
 board to your MacOS computer via USB. Your computer should automatically create the needed /dev/tty 
 file for communication:
