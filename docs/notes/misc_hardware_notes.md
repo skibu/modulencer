@@ -14,24 +14,25 @@ CGS circuit by Ken Stone is highly recommended - https://github.com/mamonulabs/C
 ![IMG_1472](https://github.com/user-attachments/assets/898ca0e9-287a-4b50-b259-bccc65f20a40)
 ￼
 Note that for the TL071 top 2 pins and lower right one don’t appear to be connected.  This corresponds to the TL071H data sheet shown below, and means that the offset inputs of the TL071 indeed not used, so can use a TL072H 8-pin package and really save on space and components. 
-![Not to scale](https://github.com/user-attachments/assets/d3f142e9-12b9-4fe0-8fb1-fe1c92c9fbbd)
-￼
+<br>
+<img width=200 src="https://github.com/user-attachments/assets/d3f142e9-12b9-4fe0-8fb1-fe1c92c9fbbd" />
+<br>￼
 Since there are lots of fake parts out there best to go with company like Mouser.com where TL072CP are 10 for $5.10
 
 Another example of amp (3.3v -> 10v) is in https://youtu.be/fud-q7li9Hw
 
-MIDI 
+## MIDI 
 Super simple midi input and output circuits https://youtu.be/0L7WAMFWSgY?t=129
 No op-amps or capacitors! Uses 6N138 opto coupler for input
 Same info at https://youtu.be/l34CNfwfuIY?t=313
 
-SD Card
+## SD Card
 Can use SPI to talk with SD card module https://embetronicx.com/tutorials/microcontrollers/stm32/stm32-sd-card-interfacing-with-example/
 Can also use SDIO https://controllerstech.com/interface-sd-card-with-sdio-in-stm32/
 SD card module $3.50 handles both SPI and SDIO https://www.adafruit.com/product/4682
 I think SDIO is faster plus can probably just use a socket instead of a whole module. 
 
-CV Output
+## CV Output
 Useful https://youtu.be/mrvgZEVAcTk
 Might want an 12-bit DAC with SPI, but also need voltages to be 0 - 10v instead of 0-3.3V.
 Quad 12-bit DAC with I2C 0-5V $7.50  https://www.adafruit.com/product/4470
@@ -41,15 +42,15 @@ More from microchip https://www.microchip.com/en-us/products/data-converters/dig
 I2C octal 12-bit $9 https://www.microchip.com/en-us/product/MCP47CMB28
 And SPI https://www.microchip.com/en-us/product/MCP48CMB28
 
-Sliders
+## Sliders
 https://store.spectrasymbol.com/
 
-LED ring
+## LED ring
 1” diameter 20 RGB LEDs $11.50 https://www.sparkfun.com/sparkfun-lumini-led-ring-1-inch-20-x-apa102-2020.html
 
 Can get knockoff rings from DIYmall, 5 for $19 https://www.amazon.com/DIYmall-WS2812B-Integrated-Individually-Addressable/dp/B0B2D5QXG5/ref=sr_1_15
 
-MIDI controller
+## MIDI controller
 Was originally thinking that wanted a few velocity sensitive buttons on the module so that could input a track manually by finger drumming. But space is limited. And would be hard to provide enough inputs. Solution is to just use a commercial MIDI controller like the $99 Akai MPK https://www.amazon.com/AKAI-PROFESSIONAL-MPK-Mini-MK3/dp/B0886KWVYR/ . Not only has 8 velocity sensitive pads,  it a full mini keyboard, 8 knobs, and a joystick. 
 
 $76 for used Akai https://reverb.com/item/86393906-used-akai-mpk-mini-mk3
@@ -86,7 +87,7 @@ Info on esp32 being a midi device (not a host unfortunately) https://github.com/
 
 Seems that tinyUSB should already work, maybe https://github.com/adafruit/Adafruit_TinyUSB_Arduino/issues/360
 
-Misc Parts
+## Misc Parts
 Digital rotary encoder 5 for $10 https://www.amazon.com/dp/B07F24TRYG/
 
 Thonk is great source of DIY parts https://www.thonk.co.uk/product-category/parts/
