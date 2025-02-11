@@ -24,7 +24,8 @@
    workhorse ESP32. Plus might want to connect I2C inputs, like a F8R faderbank directly to the display via
    I2C. With I2C one can communicate with multiple devices.
  * Must be readily available. For example, the Waveshare devices are out of stock, which is quite a nuisance.
-   
+
+Some useful info on display issues see https://www.haraldkreuzer.net/en/news/Using-Sunton-MaTouch-ESP32-S3-7-inch-displays-with-LVGL-and-ESP-IDF
 
 ## EleCrow CrowPanel Advance 7.0" TFT display
 The display that currently meets all the criteria is the CrowPanel Advance 7.0" TFT. Costs $34.90 (plus shipping).
