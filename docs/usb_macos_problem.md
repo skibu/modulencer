@@ -42,4 +42,35 @@ It could also be another Product ID from the company WCH that is not automatical
 For unsupported USB chips you will need to load in a new driver onto your MacOS computer.
 
 ## Update drivers on MacOS to handle CH340K chip
+The driver problem is rather complicated but the solution is quite simple. The reason it is 
+complicated is because there is a lot of disinformation out there due to the drivers changing over 
+the years. 
+
+Key point is that while Apple does provide drivers for lots of USB chips, including those from WCH
+like the CH340G, they don't supply drivers for all such chips. This means that most of the time 
+the Apple drivers are sufficient. But the CH340K chip is newer and not supported. Therefore you need 
+to install an updated driver. But to complicate things further, WCH has not provided a driver
+that works with the CH340K on their GiitHub repo at https://github.com/WCHSoftGroup/ch34xser_macos . 
+
+But someone let WCH know about the problem a few years ago and they addressed it and provided an updated
+pkg file THAT WORKS! Simply go to 
+https://drive.google.com/file/d/1XY9kOZ1EUEC6M5IrDPSYzNRRJ1k6VkwL/view?usp=sharing , download the 
+zip file onto your MacOS machine, unzipi it, and then execute the .pkg file to install the driver.
+Yes, the pkg file from the google drive is different from latest ones available from WCH. 
+
+In case you are interested how I found this magic driver see 
+https://github.com/LilyGO/LILYGO-T-OI/issues/3#issuecomment-907645945  
+
+## Verifying Driver
+Once you have install the proper driver you can view driver extensions at /Library/Extensions/ . 
+So make sure the Info.plist file contains the Product ID of the USB chip being used:
+```
+$ ls /Library/Extensions/CH34xVCPDriver.kext
+Contents
+$ ls /Library/Extensions/CH34xVCPDriver.kext/Contents/Info.plist
+/Library/Extensions/CH34xVCPDriver.kext/Contents/Info.plist
+```
+
+
+
 
