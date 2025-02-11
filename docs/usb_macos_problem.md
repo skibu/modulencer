@@ -56,10 +56,11 @@ to install an updated driver. But to complicate things further, WCH has not prov
 that works with the CH340K on their GiitHub repo at https://github.com/WCHSoftGroup/ch34xser_macos . 
 
 But someone let WCH know about the problem a few years ago and they addressed it and provided an updated
-pkg file THAT WORKS! Simply go to 
-https://drive.google.com/file/d/1XY9kOZ1EUEC6M5IrDPSYzNRRJ1k6VkwL/view?usp=sharing , download the 
-zip file onto your MacOS machine, unzipi it, and then execute the .pkg file to install the driver.
-Yes, the pkg file from the google drive is different from latest ones available from WCH. 
+pkg file THAT WORKS! Simply go to https://github.com/skibu/modulencer/blob/main/misc/CH34xVCPDriver.pkg
+, download the 
+.pkg file onto your MacOS machine, and then execute the .pkg file to install the driver.
+Yes, this pkg file is different from latest ones available from WCH GitHub repo. Was not able to get 
+the one from the WCH GitHub repo to work.
 
 In case you are interested how I found this magic driver see 
 https://github.com/LilyGO/LILYGO-T-OI/issues/3#issuecomment-907645945  
