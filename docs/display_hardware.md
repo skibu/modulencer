@@ -44,6 +44,10 @@ on the 7" display as well.
 ## Software and Tutorials
 For the CrowPanel see the tutorial at https://github.com/Elecrow-RD/CrowPanel-ESP32-Display-Course-File/tree/main/CrowPanel_ESP32_Tutorial
 
+[LVGL lv_conf.h file](https://github.com/Elecrow-RD/CrowPanel-ESP32-Display-Course-File/blob/main/CrowPanel_ESP32_Tutorial/File/LVGL%20lv_conf%20file/lv_conf.h)
+
+[Tutorial Code](https://github.com/Elecrow-RD/CrowPanel-ESP32-Display-Course-File/tree/main/CrowPanel_ESP32_Tutorial/Code)
+
 ## Backup display
 In case the CrowPanel is not available, here is a very similar display, though costs 30% more:
 
