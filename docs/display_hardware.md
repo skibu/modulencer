@@ -41,7 +41,12 @@ Note: first purchased a 4.3" CrowPanel since thought might want a smaller displa
 identical to the 7" version though so any software developed for the 4.3" display should automatically work
 on the 7" display as well.
 
+## Software and Tutorials
+For the CrowPanel see the tutorial at https://github.com/Elecrow-RD/CrowPanel-ESP32-Display-Course-File/tree/main/CrowPanel_ESP32_Tutorial
+
 ## Backup display
+In case the CrowPanel is not available, here is a very similar display, though costs 30% more:
+
 MaTouch ESP32-S3 Parallel TFT with Touch 7“
 $48.90 1024x600 (the 800x480 is an inerior non-IPS display)
 https://www.makerfabs.com/esp32-s3-parallel-tft-with-touch-7-inch.html
