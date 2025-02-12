@@ -10,6 +10,7 @@
  * High-res - 800 x 480 pixels. If going to create a nice interface then need lots of resolution.
  * 16-bit 64k colors - Ideally would have 24-bit color like a regular computer but that takes twice as much
    memory as 16-bit color. And 16-bit color should still be great.
+ * IPS Display - they look much better and brighter at an angled view.
  * 16-bit parallel display driver - Smaller displays typically use SPI display because of simplicity.
    But SPI is just one pixel at a time. That would be too slow for a high-res 800 x 480 display.
  * ESP32-S3 microprocessor - A high-res 800x480 display with 16 bit-color needs quite a bit of horse power and
@@ -27,7 +28,7 @@
 
 Some useful info on display issues see https://www.haraldkreuzer.net/en/news/Using-Sunton-MaTouch-ESP32-S3-7-inch-displays-with-LVGL-and-ESP-IDF
 
-## EleCrow CrowPanel Advance 7.0" TFT display
+## EleCrow CrowPanel Advance 7.0" 800x480 IPS display
 The display that currently meets all the criteria is the CrowPanel Advance 7.0" TFT. Costs $34.90 (plus shipping).
 https://www.elecrow.com/crowpanel-advance-7-0-hmi-esp32-ai-display-800x480-artificial-intelligent-ips-touch-screen-support-meshtastic-and-arduino-lvgl-micropython.html
 
@@ -40,5 +41,11 @@ Note: first purchased a 4.3" CrowPanel since thought might want a smaller displa
 identical to the 7" version though so any software developed for the 4.3" display should automatically work
 on the 7" display as well.
 
-## Info on other possible displays
+## Backup display
+MaTouch ESP32-S3 Parallel TFT with Touch 7“
+$48.90 1024x600 (the 800x480 is an inerior non-IPS display)
+https://www.makerfabs.com/esp32-s3-parallel-tft-with-touch-7-inch.html
+[Useful details](https://www.haraldkreuzer.net/en/news/first-impressions-new-makerfabs-matouch-esp32-s3-7-inch-ips-displays)
+
+## Info on all other possible displays
 See https://github.com/skibu/modulencer/blob/main/docs/notes/display_boards.md
