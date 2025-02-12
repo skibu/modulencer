@@ -36,9 +36,10 @@ Seems that want to use parallel instead of SPI communication with TFT display so
 3.5” 320x480 $44 - https://www.makerfabs.com/esp32-s3-parallel-tft-with-touch-ili9488.html
 4” 480x480 $39 - https://www.makerfabs.com/esp32-s3-parallel-tft-with-touch-4-inch.html
 See also details at  https://wiki.makerfabs.com/ESP32_S3_Parallel_3.5_TFT_with_Touch.html
+[Useful details by reviewer](https://www.haraldkreuzer.net/en/news/first-impressions-new-makerfabs-matouch-esp32-s3-7-inch-ips-displays)
 
-800*480 4.3” $39 5-point capacitive touch using GT911, with speaker https://www.makerfabs.com/esp32-s3-parallel-tft-with-touch-4-3-inch.html
-800*480 4.3” $37 - https://www.tindie.com/products/makerfabs/esp32-s3-parallel-tft-with-touch-43/ 
+800x480 4.3” $39 5-point capacitive touch using GT911, with speaker https://www.makerfabs.com/esp32-s3-parallel-tft-with-touch-4-3-inch.html
+800x480 4.3” $37 - https://www.tindie.com/products/makerfabs/esp32-s3-parallel-tft-with-touch-43/ 
 
 ## Elecrow.com
 https://m.elecrow.com/pages/shop/shop?cid=104
