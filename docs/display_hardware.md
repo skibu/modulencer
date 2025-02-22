@@ -8,6 +8,7 @@ The ESP32-S3 introduced significant new features:
  * Much more memory, which means that can handle larger display buffers. This allows one to use more bits per pixel, and thereby do full color. 
  * DMA - Direct Memory Access. Allows display buffers to be copied more quickly and without interfering with other tasks of the CPU. This also enables one to use more bits per pixel and thereby do full color.
  * lovyanGFX display driver - replacement for other GFX libs like Arduino GFX. lovyanGFX is much more optimized to run faster. In particular, it uses DMA when possible for the display buffers, making DMA actually usable.
+ * Many vendors now provide 4.3" to 7" 800x480 pixel displays based on ESP32-S3. Therefore pricing is good. Higher resolution displays are a recent development since only with the ESP32-S3 can one handle the proportional large amount memory.
 
 #### Processing power
 Interestingly, CPU processing power is not really a factor since the clock rate of the S3 is the same as the previous generation S2. Therefore it is the other factors that are key. 
@@ -34,7 +35,7 @@ Key features:
  * Ability to create complex business logic
  * Modular architecture for future improvements and upgrades
 
-## Requirements
+## Requirements for Display
  * Largest display possible. 7". Originally thought that wanted to use 4.3" and possibly mount the module
    in portrait mode so that it is as narrow as possible. But found that even a 4.3" module would have to
    be used in landscape mode. Since have to use landscape mode might as well max out and use 7" display.
