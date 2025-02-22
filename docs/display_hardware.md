@@ -1,5 +1,39 @@
 # Display Hardware - Elecrow CrowPanel Advanced 7"
 
+## Technology change
+Key reason that pursuing creating a module using a large touch screen display for most of the UI is that in the last couple of years there have been a big change: the availability of a cheap, high-res, full color, responsive displays. This isn't about the display technology, but instead the availability of the ESP32-S3 microprocessor. 
+
+#### ESP32-S3
+The ESP32-S3 introduced significant new features:
+ * Much more memory, which means that can handle larger display buffers. This allows one to use more bits per pixel, and thereby do full color. 
+ * DMA - Direct Memory Access. Allows display buffers to be copied more quickly and without interfering with other tasks of the CPU. This also enables one to use more bits per pixel and thereby do full color.
+ * lovyanGFX display driver - replacement for other GFX libs like Arduino GFX. lovyanGFX is much more optimized to run faster. In particular, it uses DMA when possible for the display buffers, making DMA actually usable.
+
+#### Processing power
+Interestingly, CPU processing power is not really a factor since the clock rate of the S3 is the same as the previous generation S2. Therefore it is the other factors that are key. 
+
+#### 16-bit parallel communication
+Another factor is number of pins needed for CPU to communicate with the screen. For full color, SPI, the normally used serial communication scheme, is not sufficient. Need to transfer data in parallel. Therefore 16 bits should be used, which also means that using approximately 15 additional IO lines when compared to SPI. Note: 16 bits, or RGB 565, provides 65,536 colors, which is sufficient for full color. If would use 24 bits to get true full color then would actually need to use 32 bits per pixel of memory due to the way microprocessors work. Using twice as much memory is not worthwhile for a resolution in color that users will likely never notice.
+5 bits (bits 15-11) for the Red value, 6 bits (10-6) for Green, and 5 bits (bits 4-0) for Blue level. Human eyes are more sensitive to green, hence an additional 16 levels. But the ESP32-S3 doesn't have more IO pins, which means that number of pins was not limiting previous displays. 
+
+It should be noted though using additional 15 pins to achieve parallel communication leaves few IO pins for other purposes. Therefore it provides more reason to use two separate microprocessors, one for the display aand minimal IO, and the other for handling real-time music processing.
+
+#### LVGL
+Another factor is LVGL (Light and Versatile Graphics Library). It has been available for years now, but is recently even more important due to there now being more displays that can make use of it. 
+
+#### EEZ Studio
+GUI for creating UI via LVGL. https://www.envox.eu/ . Similar to SquareLine Studio, but is free. Was started 7 years go but seems to be now reaching significantly more usage.
+
+Key features:
+ * Drag-and-drop visual programming
+ * Flowcharting
+ * Support for LVGL (Light and Versatile Graphics Library)
+ * Project templates and examples
+ * Debugger
+ * GUI simulator
+ * Ability to create complex business logic
+ * Modular architecture for future improvements and upgrades
+
 ## Requirements
  * Largest display possible. 7". Originally thought that wanted to use 4.3" and possibly mount the module
    in portrait mode so that it is as narrow as possible. But found that even a 4.3" module would have to
