@@ -19,6 +19,12 @@ Another factor is number of pins needed for CPU to communicate with the screen. 
 
 It should be noted though using additional 15 pins to achieve parallel communication leaves few IO pins for other purposes. Therefore it provides more reason to use two separate microprocessors, one for the display aand minimal IO, and the other for handling real-time music processing.
 
+#### ISP high contrast display
+ISP displays are color ones that more visible when viewed at an angle. This can make them look much better and the system more professional. The previous generation of displays was not ISP, but in the last year more and more of even the inexpensive ones are. 
+
+#### Touch input
+Previously many displays used resistive technology for touch input. It did not work that well. But now most displays use capacitive touch sensing. And good displays now use the GT911 I2C based chip, which is quite capable. Key thing is that not only is it responsive, but it also does multi-touch. 
+
 #### LVGL
 Another factor is LVGL (Light and Versatile Graphics Library). It has been available for years now, but is recently even more important due to there now being more displays that can make use of it. 
 
