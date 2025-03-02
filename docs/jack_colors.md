@@ -12,11 +12,11 @@ Note: Since dealing with many different types, not going to use different colors
 |----------|-------|-------------|---------|
 | Gate     | ${\textsf{\color{orange}ffa500 Orange}}$| 0 or 5V | Voltage is binary - high or low |
 | Trigger  | ${\textsf{\color{red}ff0000 Red}}$      | 0 or 5V | Momentary voltage spike. Voltage is binary |
-| Clock    | ${\textsf{\color{yellow}ffa500 Yellow}}$| 0 or 5V | Gate, but specifically a clock signal |
-| CV       | ${\textsf{\color{blue}0000ff Blue}}$ to ${\textsf{\color{blue}0000ff Blue}}$ | -5V to 5V | For modulation. Negative values are blue and positive green |
-| 1V/oct   | ${\textsf{\color{purple}800080 Purple}}$  | -3V to 5V | Pitch. only single color used for entite range, with proportional intensity relative to pitch |
-| LFO      |
-| MIDI     |
+| Clock    | ${\textsf{\color{white}ffffff White}}$| 0 or 5V | Gate, but specifically a clock signal |
+| CV       | ${\textsf{\color{purple}6000ff Purple}}$ to ${\textsf{\color{brown}60ff00 Brown}}$ | -5V to 5V | For modulation. Negative values are purple and positive brown |
+| LFO      | ${\textsf{\color{blue}0000ff Blue}}$ to ${\textsf{\color{green}00ff00 Green}}$ | -5V to 5V | For slow changing modulation. Negative values are blue and positive green |
+| 1V/oct   | ${\textsf{\color{purple}800080 Purple}}$  | -3V to 5V | Pitch. Only single color used for entite range, with proportional intensity relative to pitch |
+| MIDI     | ${\textsf{\color{yellow}ffa500 Yellow}}$| MIDI | Any MIDI command, except for clock ones since those are so verbose |
 
 Notes:
  * Might determine that voltages should actually range from -7V to 7V instead of just -5V to 5V.
