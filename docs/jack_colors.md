@@ -10,9 +10,17 @@ Note: Since dealing with many different types, not going to use different colors
 
 | Function | Color | Voltage Range | Description |
 |----------|-------|-------------|---------|
-| Gate     | ${\textsf{\color{orange}ffa500 Orange}}$| 0 or 10V | Voltage is binary - high or low |
-| Trigger  | ${\textsf{\color{red}ff0000 Red}}$      | 0 or 10V | Momentary voltage spike. Voltage is binary |
+| Gate     | ${\textsf{\color{orange}ffa500 Orange}}$| 0 or 5V | Voltage is binary - high or low |
+| Trigger  | ${\textsf{\color{red}ff0000 Red}}$      | 0 or 5V | Momentary voltage spike. Voltage is binary |
+| Clock    | ${\textsf{\color{yellow}ffa500 Yellow}}$| 0 or 5V | Gate, but specifically a clock signal |
+| CV       | ${\textsf{\color{blue}0000ff Blue}}$ to ${\textsf{\color{blue}0000ff Blue}}$ | -5V to 5V | For modulation. Negative values are blue and positive green |
+| 1V/oct   | ${\textsf{\color{purple}800080 Purple}}$  | -3V to 5V | Pitch. only single color used for entite range, with proportional intensity relative to pitch |
+| LFO      |
+| MIDI     |
 
+Notes:
+ * Might determine that voltages should actually range from -7V to 7V instead of just -5V to 5V.
+ * 1V/Oct upper limit is 5V instead of standard 7V since all inputs/outputs will have same upper limit, which is currently 5V 
 
 ## Buchla colors
 Buchla synths use colored jacks to indicate their purpose. these colors are described in 
