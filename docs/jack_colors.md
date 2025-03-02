@@ -11,7 +11,7 @@ Note: Since dealing with many different types, not going to use different colors
 | Function | Color | Voltage Range | Description |
 |----------|-------|-------------|---------|
 | Trigger  | ${\textsf{\color{red}ff0000 Red}}$      | 0 or 7V | Momentary voltage spike. Voltage is binary |
-| Gate     | ${\textsf{\color{orange}ffa500 Orange}}$| 0 or 7V | Voltage is binary - high or low |
+| Gate     | ${\textsf{\color{orange}ffa500 Orange}}$| 0 or 7V | ADSR. Voltage is binary - high or low |
 | Envelope | ${\textsf{\color{yellow}ffa500 Yellow}}$| 0 to 7V | Intensity proportional to voltage |
 | Clock    | ${\textsf{\color{white}ffffff White}}$. | 0 or 7V | Gate, but specifically a clock signal |
 | CV       | ${\textsf{\color{purple}6000ff Purple}}$ to ${\textsf{\color{brown}60ff00 Brown}}$ | -7V to 7V | For modulation. Negative values are purple and positive brown |
