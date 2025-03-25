@@ -22,7 +22,7 @@ void buzz(idfx::OutputPWM& buzzer_pwm) {
 }
 
 void testNew(void) {
-    INFO("=============== Starting Program ===============\n");
+    INFO("=============== Starting Test Program ===============\n");
 
     auto display = idfx::ElecrowDisplay(800, 480);
 
