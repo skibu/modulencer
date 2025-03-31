@@ -23,3 +23,8 @@ To install doxygen on a Mac use.
 ```
 brew install doxygen
 ```
+### Viewing documentation
+The Modulencer documentation can be viewed by pointing your web browser to the project's html directory under your git directory. Use something like:
+```
+file:///Users/michaelsmith/git/modulencer/ui_vscode_project/html/index.html
+```
