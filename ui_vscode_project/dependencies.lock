@@ -49,7 +49,7 @@ dependencies:
       type: service
     version: 9.2.2
   skibu/idfx:
-    component_hash: 2e047d1521c468077fbadc3eb159439414bcbd3b32a20b53c5159bdb38b5258c
+    component_hash: 0503e069b149a20511966e7106417ed5d296393c774a2dd10761f46a5232e62a
     dependencies:
     - name: espressif/esp_lvgl_port
       registry_url: https://components.espressif.com
@@ -58,12 +58,12 @@ dependencies:
     source:
       registry_url: https://components.espressif.com/
       type: service
-    version: 0.0.47
+    version: 0.0.48
 direct_dependencies:
 - espressif/esp_lcd_touch_gt911
 - espressif/esp_lvgl_port
 - idf
 - skibu/idfx
-manifest_hash: edf6adf393c2b8a39c799ed5f5f09884ba2558a6b6fe4103171b4909084618b7
+manifest_hash: c1e8399f047059194981ee7acdcc1ae812d0266f41586061d0e73f3d47b561b4
 target: esp32s3
 version: 2.0.0

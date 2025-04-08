@@ -26,6 +26,12 @@ class PCA9557 : public IOExpander {
  
     ~PCA9557();
 
+    // Delete copy constructor and copy assignment operator.
+    // This is important because this object represents a piece of hardware and
+    // should not be copied or assigned since then it would be wrongly destructed.
+    PCA9557(const PCA9557&) = delete;
+    PCA9557& operator=(const PCA9557&) = delete;
+
     /* Sets the specified config bit to 0, which indicates it is an output bit. */
     void configAsOutput(int io_bit) const;
 

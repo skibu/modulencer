@@ -36,10 +36,10 @@ ElecrowDisplay::ElecrowDisplay(int width, int height, ElecrowBoard &board)
 void ElecrowDisplay::init() {
     INFO("Initializing Elecrow display...");
 
-    auto expander = board_.getIOExpander();
+    const PCA9557* expander_ptr = &board_.getIOExpander();
 
         // Enable the backlight, which is on the PCA9557 IO extender chip
-    OutputBit backlight_io(GPIONum(BACKLIGHT_IO_BIT), "Backlight", &expander);
+    OutputBit backlight_io(GPIONum(BACKLIGHT_IO_BIT), "Backlight", expander_ptr);
     backlight_io.setOn();
 
     // Sets IO1_TP_INT pin 1 to low, then sets IO expander bit 2 to LOW, delays 20msec, and then back to HIGH, 
@@ -54,7 +54,7 @@ void ElecrowDisplay::init() {
 
     // Toggle PCA_IO2_TP_RST low and then high to reset the touch panel
     DEBUG("Toggling TP_RST expander IO bit %d to low and then high", TP_RST);
-    const OutputBit touch_panel_reset_gpio(GPIONum(TP_RST), "TP_RST", &expander);
+    const OutputBit touch_panel_reset_gpio(GPIONum(TP_RST), "TP_RST", expander_ptr);
     touch_panel_reset_gpio.setOff();
     sleep(20ms);
     touch_panel_reset_gpio.setOn();
