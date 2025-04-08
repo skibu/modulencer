@@ -4,13 +4,19 @@
  * SPDX-License-Identifier: MIT
  */
 
+#pragma once
+
 #include "idfx/display/displayDriverBase.hpp"
 
 namespace idfx {
 
+// Forward declaration of ElecrowBoard since we have a circular dependency
+// between ElecrowBoard and ElecrowDisplay.
+class ElecrowBoard;
+
 class ElecrowDisplay : public DisplayDriverBase {
    public:
-    ElecrowDisplay(int width, int height);
+    ElecrowDisplay(int width, int height, ElecrowBoard &board);
 
    protected:
     void init() override;
@@ -24,7 +30,8 @@ class ElecrowDisplay : public DisplayDriverBase {
     };
 
    private:
+    const ElecrowBoard &board_;
     lv_disp_t *disp;
- };
+};
 
-} // End of namespace idf
+}  // namespace idfx

@@ -1,12 +1,13 @@
 #include "test.hpp"
 
-#include "idfx/elecrow/elecrowDisplay.hpp"
+#include "idfx/elecrow/elecrowBoard.hpp"
 #include "idfx/elecrow/interfaces.hpp"
 #include "idfx/hardware/interrupts.hpp"
 #include "idfx/hardware/io.hpp"
 #include "idfx/hardware/pca9557.hpp"
 #include "idfx/utils/log.hpp"
 #include "idfx/utils/time.hpp"
+
 
 void individual_isr_function(int num) {
     INFO("====================== in individual_isr_function() for bit %d", num);
@@ -20,11 +21,19 @@ void buzz(idfx::OutputPWM& buzzer_pwm) {
     buzzer_pwm.setFrequency(1000);
     idfx::sleep(1000ms);
 }
+extern "C" void lvgl_port_app_main(void);
 
 void testNew(void) {
     INFO("=============== Starting Test Program ===============\n");
 
-    auto display = idfx::ElecrowDisplay(800, 480);
+    // Create Elecrow board, which for now turns on backlight. Create it using new
+    // so that it doesn't get destructed when going out of scope.
+    auto board_ptr = new idfx::ElecrowBoard(800, 480);
+
+    // Run the lvgl port application to see if can display anything
+    lvgl_port_app_main();
+
+    if (true) return;
 
     // // Play with buzzer
     // auto buzzer = idf::OutputBit(GPIONum(GPIO_NUM_8), "buzzer");

@@ -1,11 +1,12 @@
 /*
  * SPDX-License-Identifier: MIT
  */
+#include "idfx/elecrow/elecrowDisplay.hpp"
+
 #include <thread>
 
-#include "gpio_cxx.hpp"
-
-#include "idfx/elecrow/elecrowDisplay.hpp"
+#include "esp-idf-cxx/gpio_cxx.hpp"
+#include "idfx/elecrow/elecrowBoard.hpp"
 #include "idfx/elecrow/interfaces.hpp"
 #include "idfx/hardware/pca9557.hpp"
 #include "idfx/utils/log.hpp"
@@ -20,8 +21,8 @@ using namespace idfx;
  * @param width The width of the display in pixels.
  * @param height The height of the display in pixels.
  */
-ElecrowDisplay::ElecrowDisplay(int width, int height)
-    : DisplayDriverBase(width, height) {
+ElecrowDisplay::ElecrowDisplay(int width, int height, ElecrowBoard &board)
+    : DisplayDriverBase(width, height), board_(board) {
         // Initialize the display so that it can be used
         init();
 }
@@ -34,13 +35,11 @@ ElecrowDisplay::ElecrowDisplay(int width, int height)
  */
 void ElecrowDisplay::init() {
     INFO("Initializing Elecrow display...");
-    
-    // Configuration of the IO expander
-    PCA9557 ioExtender = PCA9557(i2c_master, I2CAddress(IO_EXPANDER_I2C_ADDR));
 
+    auto expander = board_.getIOExpander();
 
-    // Enable the backlight, which is on the PCA9557 IO extender chip
-    OutputBit backlight_io(GPIONum(BACKLIGHT_IO_BIT), "Backlight", &ioExtender);
+        // Enable the backlight, which is on the PCA9557 IO extender chip
+    OutputBit backlight_io(GPIONum(BACKLIGHT_IO_BIT), "Backlight", &expander);
     backlight_io.setOn();
 
     // Sets IO1_TP_INT pin 1 to low, then sets IO expander bit 2 to LOW, delays 20msec, and then back to HIGH, 
@@ -55,7 +54,7 @@ void ElecrowDisplay::init() {
 
     // Toggle PCA_IO2_TP_RST low and then high to reset the touch panel
     DEBUG("Toggling TP_RST expander IO bit %d to low and then high", TP_RST);
-    const OutputBit touch_panel_reset_gpio(GPIONum(TP_RST), "TP_RST", &ioExtender);
+    const OutputBit touch_panel_reset_gpio(GPIONum(TP_RST), "TP_RST", &expander);
     touch_panel_reset_gpio.setOff();
     sleep(20ms);
     touch_panel_reset_gpio.setOn();

@@ -81,7 +81,17 @@
         "variant": "cpp",
         "gpio.h": "c",
         "codecvt": "cpp",
-        "sdkconfig.h": "c"
+        "sdkconfig.h": "c",
+        "esp_lcd_panel_rgb.h": "c",
+        "lvgl.h": "c",
+        "lv_version.h": "c",
+        "esp_lcd_touch_gt911.h": "c",
+        "i2c_master.h": "c",
+        "i2c.h": "c",
+        "filesystem": "cpp",
+        "esp_lcd_panel_io.h": "c",
+        "esp_lcd_io_i2c.h": "c",
+        "*.cpp_orig": "cpp"
     },
     "idf.customExtraVars": {
         "IDF_TARGET": "esp32s3"

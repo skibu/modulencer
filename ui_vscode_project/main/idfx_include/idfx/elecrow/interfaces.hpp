@@ -4,9 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "i2c_cxx.hpp"
 
-using namespace idf;
+//using namespace idf;
 
 // I2C frequency constants
 #define I2C_STANDARD_MODE_HZ 100000
@@ -28,7 +27,3 @@ using namespace idf;
 // IO specifiecations for the touch panel
 #define TP_INT 1
 #define TP_RST 2
-
-/* Define the I2C bus for the device. This object can be then used to communicate with
-   the receivers on I2C bus */
-extern I2CMaster i2c_master;

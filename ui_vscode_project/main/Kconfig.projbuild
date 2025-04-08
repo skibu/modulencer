@@ -1,0 +1,10 @@
+menu "Modulencer configuration"
+
+	# Define CONFIG_I2C_SKIP_LEGACY_CONFLICT_CHECK so we 
+    # can use v2 of I2C driver without program aborting.
+	# This allows the option to be set via menuconfig.
+	config I2C_SKIP_LEGACY_CONFLICT_CHECK
+		bool "So that can use v2 of I2C driver without program aborting"
+		default y
+
+    endmenu        
