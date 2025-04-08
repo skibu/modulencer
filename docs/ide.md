@@ -14,3 +14,17 @@ so that the compiler could find the include files. To determine the proper direc
 ```
 $ sudo find / -name iostream 2>&1 | grep -v "not permitted" | grep -v "No such file or directory"
 ```
+
+## doxygen document builder
+Using doxygen to generate html based documentation that is based on annotations added to 
+the C++ source code. Documentation of doxygen is at https://www.doxygen.nl/ .
+
+To install doxygen on a Mac use. 
+```
+brew install doxygen
+```
+### Viewing documentation
+The Modulencer documentation can be viewed by pointing your web browser to the project's html directory under your git directory. Use something like:
+```
+file:///Users/michaelsmith/git/modulencer/ui_vscode_project/html/index.html
+```
