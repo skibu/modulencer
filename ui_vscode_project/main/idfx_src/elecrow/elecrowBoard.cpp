@@ -21,5 +21,6 @@ idfx::ElecrowBoard::ElecrowBoard(int width, int height)
 }
 
 idfx::ElecrowBoard::~ElecrowBoard() {
-    WARN("ElecrowBoard destructor called, but should probably not be destructing hardware objects");
+    // Using ERROR logging so that stack trace provided so can figure out why being called
+    ERROR("ElecrowBoard destructor called, but should probably not be destructing hardware objects");
 }

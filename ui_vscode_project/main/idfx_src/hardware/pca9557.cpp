@@ -10,7 +10,7 @@
 using namespace idfx;
 
 PCA9557::PCA9557(const I2CAddress address, const I2CNumber i2c_number)
-    : device_(address, "PCA9557 IO Extender", i2c_number, Frequency::Hz(CLOCK_SPEED)) {
+    : device_(address, "PCA9557 IO Expander", i2c_number, Frequency::Hz(CLOCK_SPEED)) {
     DEBUG("Creating PCA9557 I2C based IO expander object");
 
     auto result = device_.writeAndRead(POLARITY_REGISTER, 1);
@@ -26,7 +26,8 @@ PCA9557::PCA9557(const I2CAddress address, const I2CNumber i2c_number)
 }
 
 PCA9557::~PCA9557() {
-    WARN("Hardware device %s being destructed, which is probably noot intended.",
+    // Using ERROR logging so that stack trace provided so can figure out why being called
+    ERROR("Hardware device %s being destructed, which is probably not intended.",
          device_.toName().c_str());
 }
 
