@@ -12,59 +12,54 @@
 #include "idfx/utils/log.hpp"
 #include "idfx/utils/time.hpp"
 
+
 using namespace idfx;
 
 /**
- * Constructor for the ElecrowDisplay class. Initializes the display with the specified width and height.
- * The display is then initialized in the init() method.
+ * Constructor for the ElecrowDisplay class. Initializes the display with the specified width and
+ * height. The display is then initialized in the init() method.
  *
  * @param width The width of the display in pixels.
  * @param height The height of the display in pixels.
  */
-ElecrowDisplay::ElecrowDisplay(int width, int height, ElecrowBoard &board)
-    : DisplayDriverBase(width, height), board_(board) {
-        // Initialize the display so that it can be used
-        init();
+ElecrowDisplay::ElecrowDisplay(uint32_t width, uint32_t height, ElecrowBoard& elecrow_board)
+    : RGBDisplayBase(width, height),
+      backlight_io_(GPIONum(BACKLIGHT_IO_BIT), "Backlight", &(elecrow_board.getIOExpander())) {
+    INFO("Creating ElecrowDisplay object");
+
+    // Initialize the configuration of the display
+
+    // Set the GPIO pins for the display
+    setHSyncGpioNum(GPIONum(GPIO_NUM_40));
+    setVSyncGpioNum(GPIONum(GPIO_NUM_41));
+    setDeGpioNum(GPIONum(GPIO_NUM_42));
+    setPclkGpioNum(GPIONum(GPIO_NUM_39));
+    // Not setting disp_gpio_num since not used by this display and so the default of GPIO_NUM_NC isi fine
+    //setDispGpioNum(GPIONum(GPIO_NUM_NC));
+
+    // Set the GPIO pins for the RGB data
+    setRgbGpio(0, GPIONum(GPIO_NUM_21));
+    setRgbGpio(1, GPIONum(GPIO_NUM_47));
+    setRgbGpio(2, GPIONum(GPIO_NUM_48));
+    setRgbGpio(3, GPIONum(GPIO_NUM_45));
+    setRgbGpio(4, GPIONum(GPIO_NUM_38));
+    setRgbGpio(5, GPIONum(GPIO_NUM_9));
+    setRgbGpio(6, GPIONum(GPIO_NUM_10));
+    setRgbGpio(7, GPIONum(GPIO_NUM_11));
+    setRgbGpio(8, GPIONum(GPIO_NUM_12));
+    setRgbGpio(9, GPIONum(GPIO_NUM_13));
+    setRgbGpio(10, GPIONum(GPIO_NUM_14));
+    setRgbGpio(11, GPIONum(GPIO_NUM_7));
+    setRgbGpio(12, GPIONum(GPIO_NUM_17));
+    setRgbGpio(13, GPIONum(GPIO_NUM_18));
+    setRgbGpio(14, GPIONum(GPIO_NUM_3));
+    setRgbGpio(15, GPIONum(GPIO_NUM_46));
 }
 
-/**
- * The initialization process was determined by looking at the setup() in
- * the Elecrow factory code software at 
- * https://github.com/Elecrow-RD/CrowPanel-Advance-HMI-ESP32-AI-Display/blob/master/4.3/factory_code/factory_code.ino#L1252 
- * Initialization for other displays will be completely different.
- */
-void ElecrowDisplay::init() {
-    INFO("Initializing Elecrow display...");
-
-    const PCA9557* expander_ptr = &board_.getIOExpander();
-
-        // Enable the backlight, which is on the PCA9557 IO extender chip
-    OutputBit backlight_io(GPIONum(BACKLIGHT_IO_BIT), "Backlight", expander_ptr);
-    backlight_io.setOn();
-
-    // Sets IO1_TP_INT pin 1 to low, then sets IO expander bit 2 to LOW, delays 20msec, and then back to HIGH, 
-    // and delays for 100ms. And then it sets pin 1 to input, which I guess in a sense releases it.
-    // Pin 2 of extender is PCA_IO2_TP_RST. And pin 1 is IO1_TP_INT, the interrupt pin for the 
-    // touch panel.
-    // First, set the touch panel interrupt pin to low
-    INFO("Resetting touch panel");
-    DEBUG("Setting TP_INT IO bit %d to an output bit and to low", TP_INT);
-    const OutputBit touch_panel_interrupt_gpio(GPIONum(TP_INT), "TP_INT");
-    touch_panel_interrupt_gpio.setOff();
-
-    // Toggle PCA_IO2_TP_RST low and then high to reset the touch panel
-    DEBUG("Toggling TP_RST expander IO bit %d to low and then high", TP_RST);
-    const OutputBit touch_panel_reset_gpio(GPIONum(TP_RST), "TP_RST", expander_ptr);
-    touch_panel_reset_gpio.setOff();
-    sleep(20ms);
-    touch_panel_reset_gpio.setOn();
-
-    DEBUG("Setting TP_INT IO bit %d back to an input bit so that interrupts can be handled", TP_INT);
-    sleep(100ms);
-    const InputBit touch_panel_interrupt_gpio_input(GPIONum(TP_INT), "TP_INT");
-
-    INFO("Done resetting touch panel");
+ElecrowDisplay::~ElecrowDisplay() {
+    ERROR("Destroying ElecrowDisplay object but should not destory hardware objects!");
 }
 
-void ElecrowDisplay::flush() {
+void ElecrowDisplay::turnOnBacklight(bool on) const {
+    backlight_io_.set(on);
 }

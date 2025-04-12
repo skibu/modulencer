@@ -17,13 +17,20 @@ namespace idfx {
 class ElecrowBoard {
    public:
     ElecrowBoard(int width = 800, int height = 480);
+
     ~ElecrowBoard();
+
+    // Delete copy constructor and copy assignment operator.
+    // This is important because this object represents a piece of hardware and
+    // should not be copied or assigned since then it would be wrongly destructed.
+    ElecrowBoard(const ElecrowBoard&) = delete;
+    ElecrowBoard& operator=(const ElecrowBoard&) = delete;
 
     const PCA9557& getIOExpander() const {
         return io_expander_;
     }
 
-    const ElecrowDisplay& getDisplay() const {
+    const ElecrowDisplay& getDisplay() {
         return display_;
     }
 

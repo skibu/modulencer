@@ -16,4 +16,4 @@ dependencies:
   #   public: true
   espressif/esp_lcd_touch_gt911: ^1.1.3
   espressif/esp_lvgl_port: '*'
-  skibu/idfx: ^0.0.48
+  skibu/idfx: ^0.0.51

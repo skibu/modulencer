@@ -91,7 +91,8 @@
         "filesystem": "cpp",
         "esp_lcd_panel_io.h": "c",
         "esp_lcd_io_i2c.h": "c",
-        "*.cpp_orig": "cpp"
+        "*.cpp_orig": "cpp",
+        "*.c_orig": "cpp"
     },
     "idf.customExtraVars": {
         "IDF_TARGET": "esp32s3"

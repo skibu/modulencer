@@ -21,7 +21,7 @@ void buzz(idfx::OutputPWM& buzzer_pwm) {
     buzzer_pwm.setFrequency(1000);
     idfx::sleep(1000ms);
 }
-extern "C" void lvgl_port_app_main(void);
+extern "C" void lvgl_port_app_main(ElecrowBoard *board_ptr);
 
 void testNew(void) {
     INFO("=============== Starting Test Program ===============\n");
@@ -31,7 +31,7 @@ void testNew(void) {
     auto board_ptr = new idfx::ElecrowBoard(800, 480);
 
     // Run the lvgl port application to see if can display anything
-    lvgl_port_app_main();
+    lvgl_port_app_main(board_ptr);
 
     if (true) return;
 

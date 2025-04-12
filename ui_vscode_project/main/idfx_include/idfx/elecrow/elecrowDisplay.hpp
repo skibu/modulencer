@@ -6,32 +6,36 @@
 
 #pragma once
 
-#include "idfx/display/displayDriverBase.hpp"
+#include "idfx/display/rgbDisplayBase.hpp"
+// #include "idfx/elecrow/elecrowBoard.hpp"
+#include "idfx/hardware/io.hpp"
+#include "idfx/utils/log.hpp"
 
 namespace idfx {
 
-// Forward declaration of ElecrowBoard since we have a circular dependency
-// between ElecrowBoard and ElecrowDisplay.
+// Forward declaration of ElecrowBoard class. Needed due to circular reference.
 class ElecrowBoard;
 
-class ElecrowDisplay : public DisplayDriverBase {
+class ElecrowDisplay : public RGBDisplayBase {
    public:
-    ElecrowDisplay(int width, int height, ElecrowBoard &board);
+    ElecrowDisplay(uint32_t width, uint32_t height, ElecrowBoard& elecrow_board);
 
-   protected:
-    void init() override;
+    ~ElecrowDisplay();
 
-    void flush() override;
-    lv_disp_t *getDisp() override {
-        return nullptr;
-    };
-    size_t getDispBufSize() override {
-        return 0;
-    };
+    // Delete copy constructor and copy assignment operator.
+    // This is important because this object represents a piece of hardware and
+    // should not be copied or assigned since then it would be wrongly destructed.
+    ElecrowDisplay(const ElecrowDisplay&) = delete;
+    ElecrowDisplay& operator=(const ElecrowDisplay&) = delete;
+
+    /**
+     * @brief Turns on or off the display's backlight
+     * Virtual function that must be implemented by the derived class
+     */
+    void turnOnBacklight(bool on) const;
 
    private:
-    const ElecrowBoard &board_;
-    lv_disp_t *disp;
+    const OutputBit backlight_io_;
 };
 
 }  // namespace idfx
