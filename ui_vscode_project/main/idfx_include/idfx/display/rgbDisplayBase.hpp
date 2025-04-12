@@ -19,18 +19,21 @@ namespace idfx {
  * @brief Base class for 16-bit RGB656 SPI displays
  *
  * 16-bit per pixel RGB565 SPI displays are very different from the more common 1-bit displays.
- * A 16-bit display transfers 16 parallel bits of data at a time, meaning that the color data can be 
+ * A 16-bit display transfers 16 parallel bits of data at a time, meaning that the color data can be
  * transmitted 16 times as fast, enabling higher refresh rates and smoother animations. This is
  * especially important for displays that are 800px x 480px or larger, where the amount of data
  * to be transferred is quite large.
- * 
+ *
  * ESP provides a special driver for RGB displays that is different from the SPI driver. This class
- * is a wrapper around the ESP driver to make it easier to use with LVGL. It provides a common interface
- * for all RGB displays, and handles the initialization and configuration of the display. 
- * 
- * The RGB565 specification is a 16-bit color format that uses 5 bits for red, 6 bits for green, and 5 bits for blue.
- * This format is commonly used in displays because it provides a good balance between color depth and memory usage.
- * The RGB565 format is also compatible with the LVGL library, which uses a 16-bit color format for its graphics.
+ * is a wrapper around the ESP driver to make it easier to use with LVGL. It provides a common
+ * interface for all RGB displays, and handles the initialization and configuration of the display.
+ * This particular driver is accessed by this class using esp_lcd_new_rgb_panel(). This ESP driver
+ * actually does most of the work.
+ *
+ * The RGB565 specification is a 16-bit color format that uses 5 bits for red, 6 bits for green, and
+ * 5 bits for blue. This format is commonly used in displays because it provides a good balance
+ * between color depth and memory usage. The RGB565 format is also compatible with the LVGL library,
+ * which uses a 16-bit color format for its graphics.
  */
 class RGBDisplayBase {
    public:
@@ -50,6 +53,12 @@ class RGBDisplayBase {
     ~RGBDisplayBase() {
         ERROR("Destroying RGBDisplayBase object but should not destory hardware objects!");
     }
+
+    // Delete copy constructor and copy assignment operator.
+    // This is important because this object represents a piece of hardware and
+    // should not be copied or assigned since then it would be wrongly destructed.
+    RGBDisplayBase(const RGBDisplayBase&) = delete;
+    RGBDisplayBase& operator=(const RGBDisplayBase&) = delete;
 
     /**
      * @brief Get the Panel object
